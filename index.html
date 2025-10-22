@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY PROFILE CARD</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+    <nav>
+        <p> <a href="index.html">Home</a> </p>
+        <p> <a href="contact.html">Contact</a> </p>
+        <p> <a href="about.html">About</a> </p>
+    </nav>
+
+    <article data-testid="test-profile-card">
+
+        <section class="section-1">
+            <figure>
+                <img src="personal.jpg" alt="MY-PICS" data-testid="test-user-avatar"
+                    width="400px" height="400px">
+            </figure>
+            <h2 data-testid="test-user-name" aria-label="Ajani Muhammad Mukhtar">Ajani Muhammad Mukhtar</h2>
+        </section>
+
+        <section class="section-2">
+
+            <section>
+                <p class="header">Bio</p>
+                <p data-testid="test-user-bio">A passionate software developer with a knack for problem-solving and a
+                    love for learning new technologies.</p>
+
+            </section>
+
+            <section>
+                <h3 data-testid=" test-user-hobbies" class="header">Hobbies</h3>
+                <ul>
+                    <li>Reading</li>
+                    <li>Acheiving my goals</li>
+                </ul>
+            </section>
+            <section>
+                <h3 data-testid="test-user-dislikes" class="header">Dislikes</h3>
+                <ul>
+                    <li>Long talks</li>
+                    <li>Shouting</li>
+                </ul>
+            </section>
+            <section data-testid="test-user-social-links">
+                <p class="header">Socials</p>
+                <ul class="socials">
+                    <li> <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/share/16hWVeq3ct/"
+                            data-testid="test-user-social-facebook"><i class="fab fa-facebook-f"></i></a> 
+                    </li>
+
+                    <li> <a target="_blank" rel="noopener noreferrer"
+                            href="https://www.instagram.com/mukhtar.ajani?igsh=MWE2MjYyd3locXFjcw=="
+                            data-testid="test-user-social-instagram"><i class="fab fa-instagram"></i></a> 
+                    </li>
+
+                    <li> <a target="_blank" rel="noopener noreferrer" href="https://x.com/Mukhtarajani?s=09"
+                            data-testid="test-user-social-twitter"><i class="fab fa-twitter"></i></a> 
+                    </li>
+
+                    <li> <a target="_blank" rel="noopener noreferrer"
+                            href="https://www.linkedin.com/in/muhammad-mukhtar-ajani-b0202233b"
+                            data-testid="test-user-social-linked-in"><i class="fab fa-linkedin-in"></i></a>
+                    </li>
+
+                </ul>
+             </section>
+            <p class="header">
+            Current Time:
+            <span data-testid="test-user-time"></span>
+            </p>
+        </section>
+    </article>
+
+    <script>
+        // Show current time in milliseconds
+        document.addEventListener("DOMContentLoaded", () => {
+        const timeEl = document.querySelector('[data-testid="test-user-time"]');
+        
+        const updateTime = () => {
+            timeEl.textContent = Date.now();
+        };
+
+        updateTime(); // Initial time
+        setInterval(updateTime, 1000); // Update every second
+        });
+
+    </script>
+</body>
+
+</html>

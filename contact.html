@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="contact.css">
+    <title>contact me</title>
+</head>
+<body>
+   <nav>
+  <p><a href="index.html">Home</a></p>
+  <p><a href="contact.html">Contact</a></p>
+  <p><a href="about.html">About</a></p>
+</nav>
+
+<form id="contact-form">
+  <h2>Contact Me</h2>
+
+  <!-- Success and error messages -->
+  <p data-testid="test-contact-success" id="success-message"></p>
+  <p data-testid="test-contact-error" id="general-error"></p>
+
+  <div class="form-grid">
+    <div class="form-group">
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" name="name" data-testid="test-contact-name" aria-describedby="error-name" />
+      <span id="error-name" class="error-text" data-testid="test-contact-error-name"></span>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" data-testid="test-contact-email" aria-describedby="error-email" />
+      <span id="error-email" class="error-text" data-testid="test-contact-error-email"></span>
+    </div>
+  </div>
+
+  <div class="form-grid">
+    <div class="form-group">
+      <label for="subject">Subject:</label>
+      <input type="text" id="subject" name="subject" data-testid="test-contact-subject" aria-describedby="error-subject" />
+      <span id="error-subject" class="error-text" data-testid="test-contact-error-subject"></span>
+    </div>
+
+    <div class="form-group">
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" rows="4" data-testid="test-contact-message" aria-describedby="error-message"></textarea>
+      <span id="error-message" class="error-text" data-testid="test-contact-error-message"></span>
+    </div>
+  </div>
+
+  <button type="submit" data-testid="test-contact-submit">Submit</button>
+</form>
+
+ <script>
+        document.getElementById("contact-form").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        // Clear previous messages
+        document.querySelector('[data-testid="test-contact-success"]').textContent = "";
+        document.querySelector('[data-testid="test-contact-error"]').textContent = "";
+        document.getElementById("error-name").textContent = "";
+        document.getElementById("error-email").textContent = "";
+        document.getElementById("error-subject").textContent = "";
+        document.getElementById("error-message").textContent = "";
+
+        // Get form values
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const subject = document.getElementById("subject").value.trim();
+        const message = document.getElementById("message").value.trim();
+
+        let hasError = false;
+
+        // Validate Name
+        if (name === "") {
+            document.getElementById("error-name").textContent = "Please enter your full name.";
+            hasError = true;
+        }
+
+        // Validate Email   
+        //Explanation: In JavaScript regex literals (between /), you only need single backslashes for escape sequences.
+        //Double backslashes are only needed when the regex is in a string (like new RegExp("\\s")).
+
+        if (email === "") {
+            document.getElementById("error-email").textContent = "Please enter your email.";
+            hasError = true;
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            document.getElementById("error-email").textContent = "Please enter a valid email address.";
+            hasError = true;
+        }
+
+        // Validate Subject
+        if (subject === "") {
+            document.getElementById("error-subject").textContent = "Please enter a subject.";
+            hasError = true;
+        }
+
+        // Validate Message (at least 10 characters)
+        if (message === "") {
+            document.getElementById("error-message").textContent = "Please enter a message.";
+            hasError = true;
+        } else if (message.length < 10) {
+            document.getElementById("error-message").textContent = "Message must be at least 10 characters long.";
+            hasError = true;
+        }
+
+        // If no errors, show success
+        if (!hasError) {
+            document.querySelector('[data-testid="test-contact-success"]').textContent = "✅ Your message has been sent successfully!";
+            document.getElementById("contact-form").reset();
+        } else {
+            document.querySelector('[data-testid="test-contact-error"]').textContent = "Please fix the errors below and try again.";
+        }
+        });
+ </script>
+
+</body>

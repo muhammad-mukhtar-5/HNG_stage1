@@ -1,0 +1,106 @@
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #d8b4fe, #a78bfa); /* soft lavender gradient */
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-width: 500px;
+}
+
+
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  height: 70px;
+  background: linear-gradient(135deg, purple 0%, rebeccapurple 100%);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px); /* gives a subtle glass effect */
+}
+
+nav p {
+  margin: 0;
+}
+
+nav p a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  transition: color 0.3s, transform 0.2s;
+}
+
+/* Hover and active effects */
+nav p a:hover {
+  color: #ffb6c1; /* light pink that matches your button */
+  transform: scale(1.1);
+}
+
+nav p a:active {
+  color: #ffc0cb;
+}
+
+
+
+main {
+  display: grid;
+  grid-template-columns: repeat( 3, minmax(300px, 1fr));
+  gap: 30px;
+  padding: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Each section box */
+section {
+  background: rgba(255, 255, 255, 0.1); /* transparent glass box */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  padding: 25px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover effect: grow slightly + glow */
+section:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+}
+
+/* Headings inside sections */
+section h2 {
+  color: #ffb6c1; /* soft pink accent */
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+/* Paragraphs and lists */
+section p,
+section li {
+  color: #f8f8ff;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* Make sure lists look nice */
+section ul {
+  padding-left: 20px;
+}
+
+@media screen and (max-width:1089px) {
+   main {
+       grid-template-columns: repeat(2, minmax(300px, 1fr));
+   }
+}
+
+/* Responsive padding for small screens */
+@media (max-width: 698px) {
+  main {
+    grid-template-columns: repeat(1 , minmax(300px, 1fr));
+  }
+}
